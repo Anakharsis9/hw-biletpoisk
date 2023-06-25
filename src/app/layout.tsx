@@ -18,18 +18,20 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={inter.className}>
-        <header className="header">
-          <h1 className="company-name">Билетопоиск</h1>
-          <div className="cart-wrapper">
-            <div className="cart-items-count">30</div>
-            <CartIcon color={vars.white} />
-          </div>
-        </header>
-        <main className="main">{children}</main>
-        <footer className="footer">
-          <span>Вопросы-ответы</span>
-          <span>О нас</span>
-        </footer>
+        <div className="app">
+          <header className="header">
+            <h1 className="company-name">Билетопоиск</h1>
+            <div className="cart-wrapper">
+              <div className="cart-items-count">30</div>
+              <CartIcon color={vars.white} />
+            </div>
+          </header>
+          <main className="main">{children}</main>
+          <footer className="footer">
+            <span>Вопросы-ответы</span>
+            <span>О нас</span>
+          </footer>
+        </div>
       </body>
     </html>
   );

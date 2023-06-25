@@ -29,10 +29,14 @@ body {
   // overflow-y: hidden;
 }
 
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 @mixin layout() {
   font-family: "Roboto";
-  position: fixed;
-  width: 100%;
 
   background-color: v.$primary-gray;
   color: v.$white;
@@ -73,11 +77,11 @@ body {
 }
 
 .main {
-  margin-top: 84px;
-  margin-bottom: 86px;
-  max-height: calc(100vh - 84px - 86px);
+  flex-grow: 1;
+  height: calc(100vh - 84px - 86px);
+  padding: 24px 32px;
+  overflow-y: auto;
   background-color: v.$background;
-  // overflow-y: auto;
 }
 
 .footer {

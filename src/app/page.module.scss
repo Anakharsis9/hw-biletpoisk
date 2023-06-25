@@ -1,7 +1,14 @@
-@use "../style/variables.module" as v;
+@use "@/style/variables.module" as v;
 
-.test {
-  font-family: "SF Pro Text";
-  font-weight: 500;
-  color: v.$primary-gray;
+// .test {
+//   font-family: "SF Pro Text";
+//   font-weight: 500;
+//   color: v.$primary-gray;
+// }
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: 23px;
+  // height: 100%;
 }
