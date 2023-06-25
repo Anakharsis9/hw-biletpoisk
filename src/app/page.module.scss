@@ -1,0 +1,7 @@
+@use "../style/variables.module" as v;
+
+.test {
+  font-family: "SF Pro Text";
+  font-weight: 500;
+  color: v.$primary-gray;
+}
