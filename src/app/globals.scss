@@ -8,17 +8,22 @@
   margin: 0;
 }
 
-@mixin fontFace($name, $path, $weight) {
+@mixin fontFace($name, $path, $weight, $style: normal) {
   @font-face {
     font-family: $name;
     font-weight: $weight;
-    font-style: normal;
+    font-style: $style;
     src: url($path) format("opentype");
   }
 }
 
 @include fontFace("SF Pro Text", "/fonts/SFProText-Regular.ttf", 400);
-@include fontFace("SF Pro Text", "/fonts/SFProText-RegularItalic.ttf", 400);
+@include fontFace(
+  "SF Pro Text",
+  "/fonts/SFProText-RegularItalic.ttf",
+  400,
+  italic
+);
 @include fontFace("SF Pro Text", "/fonts/SFProText-Medium.ttf", 500);
 @include fontFace("SF Pro Text", "/fonts/SFProText-Semibold.ttf", 600);
 

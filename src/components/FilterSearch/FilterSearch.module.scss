@@ -16,4 +16,40 @@
     line-height: 20px;
     color: v.$text-gray;
   }
+  &-controls {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.input {
+  @mixin input-text() {
+    font-family: "SF Pro Text";
+    font-size: 14px;
+    line-height: 20px;
+  }
+  &-label {
+    @include input-text;
+    font-style: normal;
+    color: v.$text-gray;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  &-field {
+    border-radius: 8px;
+    border: 1px solid v.$border-gray;
+    padding: 10px 16px;
+    @include input-text;
+
+    &::placeholder {
+      @include input-text;
+      color: v.$text-placeholder;
+    }
+    &:focus {
+      outline: 1px solid v.$orange;
+    }
+  }
 }

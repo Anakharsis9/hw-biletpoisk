@@ -5,9 +5,14 @@ export const FilterSearch = () => {
     <div className={style["filter-wrapper"]}>
       <div className={style["filter-header"]}>Фильтр поиска</div>
       <div className={style["filter-controls"]}>
-        <label htmlFor="">
-          Label text
-          <input type="text" />
+        <label className={style["input-label"]}>
+          Название
+          <input
+            type="text"
+            id="film-name"
+            className={style["input-field"]}
+            placeholder="Введите название"
+          />
         </label>
       </div>
     </div>
