@@ -1,0 +1,50 @@
+@use "@/style/variables.module" as v;
+
+@mixin layout() {
+  font-family: "Roboto";
+
+  background-color: v.$primary-gray;
+  color: v.$white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header {
+  @include layout;
+  padding: 24px 32px;
+
+  .company-name {
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: 700;
+  }
+
+  .cart-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .cart-items-count {
+      border-radius: 8px;
+      width: 28px;
+      height: 28px;
+      background-color: v.$orange;
+      color: v.$white;
+
+      font-size: 14px;
+      font-weight: 600;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.footer {
+  @include layout;
+  bottom: 0;
+  padding: 31px 32px;
+  font-size: 20px;
+  font-weight: 400;
+}

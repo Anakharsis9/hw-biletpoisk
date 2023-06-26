@@ -19,10 +19,8 @@
       height: 120px;
       border-radius: 8px;
       .filmPoster {
+        border-radius: 8px;
         object-fit: cover;
-        max-width: 100%;
-        height: auto;
-        vertical-align: middle;
       }
     }
     .filmHeader {
