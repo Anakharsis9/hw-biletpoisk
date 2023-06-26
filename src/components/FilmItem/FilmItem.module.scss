@@ -1,0 +1,58 @@
+@use "@/style/variables.module" as v;
+
+.filmItemWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: v.$white;
+  padding: 24px;
+  border-radius: 8px;
+
+  font-family: "Roboto";
+  color: v.$text-gray;
+
+  .filmInfo {
+    display: flex;
+    gap: 24px;
+    .filmPosterWrapper {
+      width: 100px;
+      height: 120px;
+      border-radius: 8px;
+      .filmPoster {
+        object-fit: cover;
+        max-width: 100%;
+        height: auto;
+        vertical-align: middle;
+      }
+    }
+    .filmHeader {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      .filmName {
+        font-size: 20px;
+        line-height: 20px;
+        font-weight: 600;
+      }
+      .filmGenre {
+        font-size: 16px;
+        line-height: 20px;
+        font-style: italic;
+      }
+    }
+  }
+  .controls {
+    display: flex;
+    gap: 24px;
+  }
+  .ticketControls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    .ticketCount {
+      font-size: 20px;
+      line-height: 20px;
+      font-weight: 600;
+    }
+  }
+}

@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className={style.container}>
       <FilterSearch />
-      <div>
+      <div className={style.filmsList}>
         <FilmItem/>
       </div>
     </div>

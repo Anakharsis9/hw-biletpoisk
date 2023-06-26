@@ -1,10 +1,15 @@
+import vars from "@/style/variables.module.scss";
 interface IconProps {
-  color: string;
+  color?: string;
   width?: number;
   height?: number;
 }
 
-export const PlusIcon = ({ color, width = 32, height = 32 }: IconProps) => {
+export const PlusIcon = ({
+  color = vars.white,
+  width = 32,
+  height = 32
+}: IconProps) => {
   return (
     <svg
       width={width}
@@ -20,7 +25,11 @@ export const PlusIcon = ({ color, width = 32, height = 32 }: IconProps) => {
     </svg>
   );
 };
-export const MinusIcon = ({ color, width = 32, height = 32 }: IconProps) => {
+export const MinusIcon = ({
+  color = vars.white,
+  width = 32,
+  height = 32
+}: IconProps) => {
   return (
     <svg
       width={width}
@@ -37,7 +46,11 @@ export const MinusIcon = ({ color, width = 32, height = 32 }: IconProps) => {
   );
 };
 
-export const CloseIcon = ({ color, width = 32, height = 32 }: IconProps) => {
+export const CloseIcon = ({
+  color = vars.primaryGray,
+  width = 32,
+  height = 32
+}: IconProps) => {
   return (
     <svg
       width={width}
@@ -54,7 +67,11 @@ export const CloseIcon = ({ color, width = 32, height = 32 }: IconProps) => {
   );
 };
 
-export const CartIcon = ({ color, width = 32, height = 32 }: IconProps) => {
+export const CartIcon = ({
+  color = vars.white,
+  width = 32,
+  height = 32
+}: IconProps) => {
   return (
     <svg
       width={width}
@@ -71,7 +88,11 @@ export const CartIcon = ({ color, width = 32, height = 32 }: IconProps) => {
   );
 };
 
-export const ImageIcon = ({ color, width = 32, height = 32 }: IconProps) => {
+export const ImageIcon = ({
+  color = "#828282",
+  width = 32,
+  height = 32
+}: IconProps) => {
   return (
     <svg
       width={width}
@@ -88,7 +109,11 @@ export const ImageIcon = ({ color, width = 32, height = 32 }: IconProps) => {
   );
 };
 
-export const ArrowIcon = ({ color, width = 32, height = 32 }: IconProps) => {
+export const ArrowIcon = ({
+  color = vars.white,
+  width = 32,
+  height = 32
+}: IconProps) => {
   return (
     <svg
       width={width}

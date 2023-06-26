@@ -1,6 +1,7 @@
 @use "@/style/variables.module" as v;
 
 .button {
+  cursor: pointer;
   font-family: "Roboto";
   font-weight: 500;
   font-size: 14px;
@@ -10,6 +11,7 @@
   padding: 10px 16px;
   color: v.$white;
   background-color: v.$orange;
+  border: none;
   border-radius: 8px;
 
   display: flex;
@@ -17,14 +19,23 @@
   justify-content: center;
   outline: none;
 
+  &:hover {
+    background-color: rgba($color: v.$orange, $alpha: 0.8);
+  }
 
   &[data-variant="outlined"] {
     color: v.$orange;
     background-color: transparent;
     border: 1px solid v.$orange;
   }
+  &[data-variant="none"] {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+  }
   &:disabled,
   &[disabled="true"] {
+    cursor: not-allowed;
     background-color: v.$orange-disabled;
   }
 }

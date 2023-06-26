@@ -1,6 +1,6 @@
 import { CartIcon } from "@/components/Icons";
 import "./globals.scss";
-import vars from "../style/variables.module.scss";
+import vars from "@/style/variables.module.scss";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
