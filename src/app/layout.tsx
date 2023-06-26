@@ -32,6 +32,8 @@ export default function RootLayout({
             <span>О нас</span>
           </footer>
         </div>
+        <div id='dropdown-portal'>
+        </div>
       </body>
     </html>
   );

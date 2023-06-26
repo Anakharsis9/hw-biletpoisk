@@ -10,5 +10,12 @@ $orange: #ff5500;
 $orange-disabled: #ffa375;
 
 :export {
+  primaryGray: $primary-gray;
+  textGray: $text-gray;
+  textPlaceholder: $text-placeholder;
+  borderGray: $border-gray;
+
+  orange: $orange;
+  orangeDisabled: $orange-disabled;
   white: $white;
 }

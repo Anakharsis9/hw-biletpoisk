@@ -1,0 +1,68 @@
+@use "@/style/variables.module" as v;
+
+@mixin input-text() {
+  font-family: "SF Pro Text";
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.selectWrapper {
+  position: relative;
+  .placeholder {
+    border-radius: 8px;
+    border: 1px solid v.$border-gray;
+    padding: 10px 16px;
+
+    @include input-text;
+    color: v.$text-placeholder;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .arrow {
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease-in-out;
+      transform: rotate(0deg);
+    }
+    &:focus {
+      outline: 1px solid v.$orange;
+    }
+    &[data-is-active="true"] {
+      outline: 1px solid v.$orange;
+      .arrow {
+        transform: rotate(180deg);
+      }
+    }
+    &[data-selected="true"] {
+      color: v.$text-gray;
+    }
+  }
+}
+
+.optionsList {
+  @include input-text;
+  position: absolute;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  background-color: v.$white;
+  box-shadow: 0px 10px 22px -4px #1b1f231f;
+  border-radius: 0px 0px 8px 8px;
+
+  .option {
+    padding: 12px 12px 10px;
+    transition: background-color 0.1s ease-in;
+    &:hover,
+    &:focus {
+      background-color: v.$orange-disabled;
+      outline: none;
+    }
+    &[data-is-selected="true"] {
+      font-weight: 500;
+      background-color: v.$orange-disabled;
+    }
+  }
+}
