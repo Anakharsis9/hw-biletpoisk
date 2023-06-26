@@ -1,0 +1,30 @@
+@use "@/style/variables.module" as v;
+
+.button {
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+
+  padding: 10px 16px;
+  color: v.$white;
+  background-color: v.$orange;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+
+
+  &[data-variant="outlined"] {
+    color: v.$orange;
+    background-color: transparent;
+    border: 1px solid v.$orange;
+  }
+  &:disabled,
+  &[disabled="true"] {
+    background-color: v.$orange-disabled;
+  }
+}
