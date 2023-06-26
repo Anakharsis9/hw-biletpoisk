@@ -7,7 +7,7 @@ import style from "./MovieItem.module.scss";
 import { useState } from "react";
 import { useAppDispatch } from "@/redux/hooks";
 import { cartActions } from "@/redux/features/cart";
-interface Movie {
+export interface Movie {
   title: string;
   posterUrl: string;
   releaseYear: number;
