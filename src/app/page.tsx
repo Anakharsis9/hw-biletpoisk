@@ -1,9 +1,9 @@
 import { FilterSearch } from "@/components/FilterSearch";
 import style from "./page.module.scss";
-import { FilmItem } from "@/components/FilmItem";
+import { MovieItem } from "@/components/MovieItem";
 
 export default function Home() {
-  const films = [
+  const movies = [
     {
       title: "Властелин колец: Братство Кольца",
       posterUrl: "https://i.postimg.cc/pdCLNMqX/1.webp",
@@ -32,9 +32,9 @@ export default function Home() {
   return (
     <div className={style.container}>
       <FilterSearch />
-      <div className={style.filmsList}>
-        {!!films.length &&
-          films.map(film => <FilmItem key={film.id} film={film} />)}
+      <div className={style.moviesList}>
+        {!!movies.length &&
+          movies.map(movie => <MovieItem key={movie.id} movie={movie} />)}
       </div>
     </div>
   );

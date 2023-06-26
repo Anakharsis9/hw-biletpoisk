@@ -1,6 +1,6 @@
 @use "@/style/variables.module" as v;
 
-.filmItemWrapper {
+.movieItemWrapper {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -11,28 +11,28 @@
   font-family: "Roboto";
   color: v.$text-gray;
 
-  .filmInfo {
+  .movieInfo {
     display: flex;
     gap: 24px;
-    .filmPosterWrapper {
+    .moviePosterWrapper {
       width: 100px;
       height: 120px;
       border-radius: 8px;
-      .filmPoster {
+      .moviePoster {
         border-radius: 8px;
         object-fit: cover;
       }
     }
-    .filmHeader {
+    .movieHeader {
       display: flex;
       flex-direction: column;
       gap: 8px;
-      .filmName {
+      .movieName {
         font-size: 20px;
         line-height: 20px;
         font-weight: 600;
       }
-      .filmGenre {
+      .movieGenre {
         font-size: 16px;
         line-height: 20px;
         font-style: italic;
