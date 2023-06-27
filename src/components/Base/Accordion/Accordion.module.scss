@@ -1,0 +1,39 @@
+@use "@/style/variables.module" as v;
+
+.accordionWrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 8px;
+  padding: 24px;
+  transition: all 0.3s ease-in-out;
+  gap: 16px;
+
+  &[data-is-active="true"] {
+    .arrow {
+      transform: rotate(180deg);
+    }
+  }
+}
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Roboto";
+  h3 {
+    font-size: 24px;
+  }
+  line-height: 32px;
+
+  .arrow {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(0deg);
+  }
+}
+
+.text {
+  font-size: 16px;
+  line-height: 24px;
+}
