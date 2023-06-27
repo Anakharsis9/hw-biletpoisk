@@ -5,19 +5,22 @@ import style from "./style.module.scss";
 import Image from "next/image";
 import { Button } from "@/components/Base/Button";
 import { useState } from "react";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { cartActions } from "@/redux/features/cart";
 import {
   useGetMovieQuery,
   useGetMovieReviewsQuery
 } from "@/redux/services/movieApi";
 import { Review, ReviewItem } from "@/components/ReviewItem";
+import { selectMovieTicketsAmount } from "@/redux/features/cart/selector";
 
 interface Props {
   params: { id: string };
 }
 export default function Page({ params }: Props) {
-  const [ticketCount, setTicketCount] = useState(0);
+  const ticketCount = useAppSelector(state =>
+    selectMovieTicketsAmount(state, params.id)
+  );
   const dispatch = useAppDispatch();
 
   const { data: movie, isLoading, error } = useGetMovieQuery(params.id);
@@ -64,7 +67,6 @@ export default function Page({ params }: Props) {
                 iconName="minus"
                 disabled={ticketCount === 0}
                 onClick={() => {
-                  setTicketCount(prev => prev - 1);
                   dispatch(cartActions.decrement(movie?.id));
                 }}
               />
@@ -74,7 +76,6 @@ export default function Page({ params }: Props) {
                 iconName="plus"
                 disabled={ticketCount === 30}
                 onClick={() => {
-                  setTicketCount(prev => prev + 1);
                   dispatch(cartActions.increment(movie?.id));
                 }}
               />
