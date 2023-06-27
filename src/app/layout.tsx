@@ -26,6 +26,7 @@ export default function RootLayout({
             <Footer/>
           </div>
         </StoreProvider>
+        <div id="modal-portal"></div>
         <div id="dropdown-portal"></div>
       </body>
     </html>

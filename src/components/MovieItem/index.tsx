@@ -5,8 +5,11 @@ import { CloseIcon } from "../Icons";
 import Image from "next/image";
 import style from "./MovieItem.module.scss";
 import { useState } from "react";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { cartActions } from "@/redux/features/cart";
+import { selectMovieTicketsAmount } from "@/redux/features/cart/selector";
+import Link from "next/link";
+import { Modal } from "../Base/Modal";
 export interface Movie {
   title: string;
   posterUrl: string;
@@ -20,13 +23,17 @@ export interface Movie {
 }
 interface MovieItemProps {
   movie: Movie;
-  onClose?: () => void;
+  onClose?: (id: string) => void;
 }
 
 export const MovieItem = ({ movie, onClose }: MovieItemProps) => {
-  const [ticketCount, setTicketCount] = useState(0);
+  const ticketCount = useAppSelector(state =>
+    selectMovieTicketsAmount(state, movie.id)
+  );
 
   const dispatch = useAppDispatch();
+
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className={style.movieItemWrapper}>
@@ -38,12 +45,12 @@ export const MovieItem = ({ movie, onClose }: MovieItemProps) => {
             alt={"poster" + movie?.title}
             width={100}
             height={120}
-            placeholder="blur"
-            blurDataURL="/imagePlaceholder.jpg"
           />
         </div>
         <div className={style.movieHeader}>
-          <h2 className={style.movieName}>{movie?.title}</h2>
+          <Link href={`/movie/${movie.id}`} className={style.movieName}>
+            {movie?.title}
+          </Link>
           <span className={style.movieGenre}>{movie?.genre}</span>
         </div>
       </div>
@@ -54,7 +61,10 @@ export const MovieItem = ({ movie, onClose }: MovieItemProps) => {
             iconName="minus"
             disabled={ticketCount === 0}
             onClick={() => {
-              setTicketCount(prev => prev - 1);
+              if (onClose && (ticketCount === 1)) {
+                setShowModal(true);
+                return;
+              }
               dispatch(cartActions.decrement(movie.id));
             }}
           />
@@ -64,16 +74,31 @@ export const MovieItem = ({ movie, onClose }: MovieItemProps) => {
             iconName="plus"
             disabled={ticketCount === 30}
             onClick={() => {
-              setTicketCount(prev => prev + 1);
               dispatch(cartActions.increment(movie.id));
             }}
           />
         </div>
-        {!!onClose && (
-          <Button variant={"none"}>
+        {onClose && (
+          <Button
+            variant={"none"}
+            onClick={() => {
+              setShowModal(true);
+            }}
+          >
             <CloseIcon width={20} height={20} />
           </Button>
         )}
+        <Modal
+          show={showModal}
+          title={"Удаление билета"}
+          onClose={() => setShowModal(false)}
+          onYes={() => {
+            onClose?.(movie.id);
+            setShowModal(false);
+          }}
+        >
+          <span>Вы уверены, что хотите удалить билет?</span>
+        </Modal>
       </div>
     </div>
   );

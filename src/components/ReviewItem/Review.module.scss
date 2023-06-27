@@ -1,0 +1,44 @@
+@use "@/style/variables.module" as v;
+
+.reviewWrapper {
+  display: flex;
+  font-family: "Roboto";
+  color: v.$text-gray;
+  background-color: v.$white;
+  border-radius: 8px;
+  padding: 24px;
+
+  gap: 32px;
+
+  .reviewerPhoto {
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 16px;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      .name {
+        font-size: 20px;
+        line-height: 32px;
+        font-weight: 600;
+      }
+      .ratingWrapper {
+        display: flex;
+        gap: 8px;
+        line-height: 32px;
+        .ratingValue {
+          font-weight: 600;
+        }
+      }
+    }
+    .reviewText {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+}

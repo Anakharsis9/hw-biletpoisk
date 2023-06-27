@@ -2,17 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export type CartState = Record<string, number>;
 
-const initialState = {};
+const initialState: CartState = {};
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    increment: (state: CartState, { payload }) => {
+    increment: (state, { payload }) => {
       const count = state[payload] || 0;
       state[payload] = count + 1;
     },
-    decrement: (state: CartState, { payload }) => {
+    decrement: (state, { payload }) => {
       const count = state[payload];
       if (!count) {
         return;

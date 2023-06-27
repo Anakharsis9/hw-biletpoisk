@@ -1,0 +1,23 @@
+@use "@/style/variables.module" as v;
+
+.cartWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+}
+.totalWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  border-radius: 8px;
+  background-color: white;
+  font-family: "Roboto";
+  color: v.$text-gray;
+  margin-bottom: 16px;
+  .title {
+    font-size: 20px;
+    line-height: 20px;
+  }
+}

@@ -1,0 +1,86 @@
+@use "@/style/variables.module" as v;
+
+.moviePageWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-family: "Roboto";
+  color: v.$text-gray;
+
+  .movieWrapper {
+    display: flex;
+    background-color: v.$white;
+    border-radius: 8px;
+    padding: 24px 24px 29px;
+    gap: 32px;
+  }
+  .moviePoster {
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    .mainInfo {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      .header {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        .title {
+          font-size: 32px;
+          line-height: 32px;
+          font-weight: 600;
+        }
+        .subInfoWrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          .subInfo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            .subHeader {
+              font-size: 20px;
+              line-height: 24px;
+              font-weight: 600;
+            }
+            .subText {
+              line-height: 24px;
+            }
+          }
+        }
+      }
+      .ticketControls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        .ticketCount {
+          font-size: 20px;
+          line-height: 20px;
+          font-weight: 600;
+        }
+      }
+    }
+    .description {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      .subHeader {
+        line-height: 32px;
+      }
+      .descriptionText {
+        line-height: 24px;
+      }
+    }
+  }
+
+  .reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}

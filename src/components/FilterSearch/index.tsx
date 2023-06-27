@@ -1,35 +1,58 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo } from "react";
 import { Select } from "../Base/Select";
 import style from "./FilterSearch.module.scss";
+import {
+  useGetCinemaMoviesQuery,
+  useGetCinemasQuery
+} from "@/redux/services/movieApi";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { selectMoviesModule } from "@/redux/features/movies/selector";
+import { moviesActions } from "@/redux/features/movies";
 
-export const FilterSearch = () => {
-  const options = [
-    { title: "Не выбран", value: "-" },
-    { title: "Боевик", value: "Боевик" },
-    { title: "Комедия", value: "Комедия" },
-    { title: "Фэнтези", value: "Фэнтези" },
-    { title: "Ужасы", value: "Ужасы" }
-  ];
-  const cinemas = [
-    { title: "Не выбран", value: "-" },
-    { title: "cinema1", value: "cinema1" },
-    { title: "cinema2", value: "cinema2" },
-    { title: "cinema3", value: "cinema3" },
-  ];
+const genres = [
+  { title: "Не выбран", value: "" },
+  { title: "Боевик", value: "action" },
+  { title: "Комедия", value: "comedy" },
+  { title: "Фэнтези", value: "fantasy" },
+  { title: "Ужасы", value: "horror" }
+];
 
-  const [genre, setGenreValue] = useState("");
-  const handleGenreSelect = (value: string) => {
-    setGenreValue(value);
-  };
-  const selectedGenre = options.find(item => item.value === genre);
+type Value = {
+  name: string;
+  genre: string;
+  cinema: string;
+};
 
-  const [cinema, setCinemaValue] = useState("");
-  const handleCinemaSelect = (value: string) => {
-    setCinemaValue(value);
-  };
-  const selectedCinema = cinemas.find(item => item.value === cinema);
+export const FilterSearch = ({
+  value,
+  onChange
+}: {
+  value: Value;
+  onChange: (value: Value) => void;
+}) => {
+  const dispatch = useAppDispatch();
+
+  const selectedGenre = useMemo(
+    () => genres.find(item => item.value === value.genre),
+    [value.genre]
+  );
+
+  const loadCinemas = useGetCinemasQuery();
+
+  const cinemas = loadCinemas.data?.map(cinema => ({
+    title: cinema.name,
+    value: cinema.id
+  }));
+
+  const selectedCinema = cinemas?.find(item => item.value === value.cinema);
+
+  const { data } = useGetCinemaMoviesQuery(selectedCinema?.value);
+
+  useEffect(() => {
+    dispatch(moviesActions.update(data));
+  }, [data, dispatch]);
 
   return (
     <div className={style["filter-wrapper"]}>
@@ -42,24 +65,31 @@ export const FilterSearch = () => {
             id="film-name"
             className={style["input-field"]}
             placeholder="Введите название"
+            onChange={e => {
+              onChange({ ...value, name: e.target.value });
+            }}
           />
         </label>
         <label className={style["input-label"]}>
           Жанр
           <Select
             selected={selectedGenre || null}
-            options={options}
+            options={genres}
             placeholder="Выберите жанр"
-            onChange={handleGenreSelect}
+            onChange={genre => {
+              onChange({ ...value, genre });
+            }}
           />
         </label>
         <label className={style["input-label"]}>
           Кинотеатр
           <Select
             selected={selectedCinema || null}
-            options={cinemas}
+            options={cinemas || []}
             placeholder="Выберите кинотеатр"
-            onChange={handleCinemaSelect}
+            onChange={cinema => {
+              onChange({ ...value, cinema });
+            }}
           />
         </label>
       </div>

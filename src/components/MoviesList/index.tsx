@@ -1,12 +1,24 @@
 "use client";
 
 import { Movie, MovieItem } from "@/components/MovieItem";
-import { useGetMoviesQuery } from "@/redux/services/movieApi";
 import style from "./MoviesList.module.scss";
 
-export const MoviesList = () => {
-  const { data: movies, isLoading, error } = useGetMoviesQuery();
+import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
+import { SerializedError } from "@reduxjs/toolkit";
 
+interface MoviesListProps {
+  movies: Movie[] | undefined;
+  isLoading?: boolean;
+  error?: FetchBaseQueryError | SerializedError | undefined;
+  onClose?: (id: string) => void;
+}
+
+export const MoviesList = ({
+  movies,
+  isLoading = false,
+  error = undefined,
+  onClose
+}: MoviesListProps) => {
   if (isLoading) {
     return (
       <div className={style.moviesList}>
@@ -27,7 +39,7 @@ export const MoviesList = () => {
     <div className={style.moviesList}>
       {!!movies?.length &&
         movies.map((movie: Movie) => (
-          <MovieItem key={movie.id} movie={movie} />
+          <MovieItem key={movie.id} movie={movie} onClose={onClose} />
         ))}
     </div>
   );

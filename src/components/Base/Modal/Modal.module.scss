@@ -1,0 +1,52 @@
+@use "@/style/variables.module" as v;
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 24px;
+  transition: all 0.3s ease-in-out;
+  font-family: "Roboto";
+  color: v.$text-gray;
+}
+
+.modal-header,
+.modal-footer {
+  display: flex;
+}
+
+.modal-header {
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 600;
+  justify-content: space-between;
+}
+
+.modal-footer {
+  gap: 8px;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.modal-body {
+  margin-top: 16px;
+  margin-bottom: 24px;
+  font-size: 16px;
+  line-height: 20px;
+}
