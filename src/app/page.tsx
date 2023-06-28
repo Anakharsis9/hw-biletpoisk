@@ -1,12 +1,16 @@
 "use client";
+
+import { useEffect, useState } from "react";
+
 import { useGetMoviesQuery } from "@/redux/services/movieApi";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { selectMoviesModule } from "@/redux/features/movies/selector";
 import { moviesActions } from "@/redux/features/movies";
-import { useEffect, useState } from "react";
+
 import { FilterSearch } from "@/components/FilterSearch";
-import style from "./page.module.scss";
 import { MoviesList } from "@/components/MoviesList";
+
+import style from "./page.module.scss";
 
 export default function Home() {
   const { value: movies } = useAppSelector(state => selectMoviesModule(state));

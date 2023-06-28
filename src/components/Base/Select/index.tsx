@@ -120,7 +120,7 @@ export const Select = ({
     if (!placeholderEl) return;
 
     const rect = placeholderEl.getBoundingClientRect();
-    
+
     setCoords({
       top: rect.bottom + window.scrollY + 1,
       left: rect.left,
@@ -129,7 +129,6 @@ export const Select = ({
     setIsOpen(prev => !prev);
   };
 
-  const dropdownPortal = document.getElementById("dropdown-portal") as Element;
 
   return (
     <div className={styles.selectWrapper} ref={rootRef}>
@@ -158,7 +157,8 @@ export const Select = ({
                 onClick={handleOptionClick}
               />
             ))}
-          </ul>, dropdownPortal 
+          </ul>,
+          document.body
         )}
     </div>
   );
